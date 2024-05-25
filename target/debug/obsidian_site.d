@@ -1,0 +1,1 @@
+/mnt/c/Users/delst/Documents/master/d3/code/obsidian_site/target/debug/obsidian_site: /mnt/c/Users/delst/Documents/master/d3/code/obsidian_site/src/lib.rs /mnt/c/Users/delst/Documents/master/d3/code/obsidian_site/src/main.rs

@@ -13,7 +13,7 @@ fn main() {
         process::exit(1);
     });
     
-    // println!("Searching for {}", config.query);
+    // println!(sdfsdfsdf"Searching for {}", config.query);
     // println!("In file {}", config.file_path);
 
     if let Err(e) = obsidian_site::run(config) {

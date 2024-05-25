@@ -45,11 +45,22 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     }
     Ok(())
 }
-fn add_file(file_path : String) -> Result<(), Box<dyn Error>> {
-    println!("attempting to parse file {file_path}");
-    let file_contents = fs::read_to_string(file_path.clone())?;
-    let data = fs::write(CONFIG_FILE_PATH, format!("{file_path}\n"));
+fn add_file(new_file_path : String) -> Result<(), Box<dyn Error>> {
+    let mut out_string : String = String::from("");
+    // refactor this to convert the file into a list of strings, split by newlines (handle indented tabs later)
     println!("successfully wrote file!");
+    let config_file_contents = fs::read_to_string(&CONFIG_FILE_PATH)?;
+    let mut config_contents = config_file_contents.split('\n').collect::<Vec<&str>>();
+
+    let config_file_contents = fs::read_to_string(&new_file_path)?;
+    config_contents.push(&new_file_path);
+    config_contents.sort();
+    config_contents.dedup();
+    config_contents.into_iter().for_each(|current_file| {
+
+        out_string += &format!("{current_file}\n");
+    });
+    fs::write(&CONFIG_FILE_PATH, out_string);
     Ok(())
 }
 pub fn read_config() -> Result<(), Box<dyn Error>> {
